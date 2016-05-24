@@ -1,0 +1,73 @@
+<!DOCTYPE html> 
+<html ng-app="resto-app">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>restaurants</title>
+        <style>
+            [ng\:cloak], [ng-cloak], .ng-cloak{display: none;}
+        </style>
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+        <script src="js/respond.min.js"></script>
+        
+    </head>
+    <body>
+        <div ng-include="'partials/header.html'"></div>
+        <div class="container" ng-controller="resto-create-controller" ng-cloak>
+            <h3>{{restaurant.name}}</h3>
+            <form method="POST" ng-submit="send()" ng-cloak>
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="form-group row list-group-item">
+                            <label for="restaurantName" class="col-sm-2 form-control-label">name</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="restaurant.name" class="form-control" id="restaurantName" placeholder="Enter restaurant name">
+                            </div>
+                            <p class="col-sm-12 error">{{errors | searchMessage: 'name'}}</p>
+                        </div>
+                        <div class="form-group row list-group-item">
+                            <div class="panel">
+                                <h4 class="panel-heading"> adress</h4>
+                                <div class="panel-body">
+                                    <div class="row list-group-item">
+                                        <label for="street" class="col-sm-2 form-control-label">street</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" ng-model="restaurant.adress.street" class="form-control" id="street" placeholder="street">
+                                        </div>
+                                        <p class="col-sm-12 error">{{errors | searchMessage: 'adress.street'}}</p>
+                                    </div>
+                                    <div class="row list-group-item">
+                                        <label for="city" class="col-sm-2 form-control-label">city</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" ng-model="restaurant.adress.place" class="form-control" id="city" placeholder="city">
+                                        </div>
+                                        <p class="col-sm-12 error">{{errors | searchMessage: 'adress.place'}}</p>
+                                    </div>
+                                    <div class="row list-group-item">
+                                        <label for="zipCode" class="col-sm-2 form-control-label">zip code</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" ng-model="restaurant.adress.zipCode" class="form-control" id="zipCode" placeholder="zip code">
+                                        </div>
+                                        <p class="col-sm-12 error">{{errors | searchMessage: 'adress.zipCode'}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="form-group row list-group-item">
+                             <input class="btn btn-block btn-info" type="submit" value="add"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div ng-include="'partials/footer.html'"></div>
+        </div>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src='js/scripts.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script src="js/resto-app.js"></script>
+    </body>
+</html>

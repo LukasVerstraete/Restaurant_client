@@ -1,0 +1,48 @@
+<!DOCTYPE html> 
+<html ng-app="resto-app">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>restaurants</title>
+        <style>
+            [ng\:cloak], [ng-cloak], .ng-cloak{display: none;}
+        </style>
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+        <script src="js/respond.min.js"></script>
+        
+    </head>
+    <body>
+        <div ng-include="'partials/header.html'"></div>
+        <div class="container" ng-controller="resto-list-controller">
+            <h3>restaurants</h3>
+            <table class="table table-hover table-responsive table-bordered table-striped">
+                <tr>
+                    <th>name</th>
+                    <th>city</th>
+                    <th>street</th>
+                    <th>zip-code</th>
+                    <th></th>
+                </tr>
+                <tr ng-cloak ng-repeat="restaurant in list" url="restaurantEditForm.html#?id={{restaurant.id}}">
+                    <td url="restaurantEditForm.html#?id={{restaurant.id}}">{{restaurant.name}}</td>
+                    <td url="restaurantEditForm.html#?id={{restaurant.id}}">{{restaurant.adress.place}}</td>
+                    <td url="restaurantEditForm.html#?id={{restaurant.id}}">{{restaurant.adress.street}}</td>
+                    <td url="restaurantEditForm.html#?id={{restaurant.id}}">{{restaurant.adress.zipCode}}</td>
+                    <td class="col-xs-1"><input type="button" class="btn btn-danger btn-block" ng-click="delete(restaurant.id)" value="delete {{restaurant.name}}"/></td>
+                </tr>
+                <tr url='restaurantForm.html'>
+                    <td colspan="5" class='text-center'><span class='glyphicon glyphicon-plus'></span></td>
+                </tr>
+            </table>
+            <div ng-include="'partials/footer.html'"></div>
+        </div>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src='js/scripts.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script src="js/resto-app.js"></script>
+    </body>
+</html>
