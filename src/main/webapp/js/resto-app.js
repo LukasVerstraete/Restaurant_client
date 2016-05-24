@@ -2,7 +2,7 @@ var restoApp = angular.module('resto-app', ['resto-app.filters']);
 
 restoApp.controller('resto-list-controller', function($scope, $http, $window) 
 {
-    $http.get('http://localhost:8080/restaurant_web/restaurant').success(function(data) 
+    $http.get('http://193.191.187.14:10078/Restaurants_Web/restaurant').success(function(data) 
     {
         $scope.list = data;
     });
@@ -10,9 +10,9 @@ restoApp.controller('resto-list-controller', function($scope, $http, $window)
     $scope.delete = function(id) 
     {
         console.log($scope.restaurant);
-        $http.post('http://localhost:8080/restaurant_web/restaurant/remove/' + id).success(function(data) 
+        $http.post('http://193.191.187.14:10078/Restaurants_Web/restaurant/remove/' + id).success(function(data) 
         {
-            $http.get('http://localhost:8080/restaurant_web/restaurant').success(function(data) 
+            $http.get('http://193.191.187.14:10078/Restaurants_Web/restaurant').success(function(data) 
             {
                 $scope.list = data;
             });
@@ -22,14 +22,14 @@ restoApp.controller('resto-list-controller', function($scope, $http, $window)
 
 restoApp.controller('resto-create-controller', function($scope, $http, $window) 
 {
-    $http.get('http://localhost:8080/restaurant_web/restaurant/create').success(function(data) 
+    $http.get('http://193.191.187.14:10078/Restaurants_Web/restaurant/create').success(function(data) 
     {
         $scope.restaurant = data;
     });
     
     $scope.send = function() 
     {
-        $http.post('http://localhost:8080/restaurant_web/restaurant', $scope.restaurant).success(function(data) 
+        $http.post('http://193.191.187.14:10078/Restaurants_Web/restaurant', $scope.restaurant).success(function(data) 
         {
             $scope.errors = data;
             if(data.length == 0)
@@ -42,7 +42,7 @@ restoApp.controller('resto-update-controller', function($scope, $http, $window, 
 {
     var id = $location.search().id;
     
-    $http.get('http://localhost:8080/restaurant_web/restaurant/' + id).success(function(data) 
+    $http.get('http://193.191.187.14:10078/Restaurants_Web/restaurant/' + id).success(function(data) 
     {
         $scope.restaurant = data;
     });
@@ -50,7 +50,7 @@ restoApp.controller('resto-update-controller', function($scope, $http, $window, 
     $scope.send = function() 
     {
         console.log($scope.restaurant);
-        $http.post('http://localhost:8080/restaurant_web/restaurant/update', $scope.restaurant).success(function(data) 
+        $http.post('http://193.191.187.14:10078/Restaurants_Web/restaurant/update', $scope.restaurant).success(function(data) 
         {
             $scope.errors = data;
             if(data.length == 0)
@@ -61,7 +61,7 @@ restoApp.controller('resto-update-controller', function($scope, $http, $window, 
     $scope.delete = function() 
     {
         console.log($scope.restaurant);
-        $http.post('http://localhost:8080/restaurant_web/restaurant/remove/' + $scope.restaurant.id).success(function(data) 
+        $http.post('http://193.191.187.14:10078/Restaurants_Web/restaurant/remove/' + $scope.restaurant.id).success(function(data) 
         {
             $window.location.href = 'index.html';
         });
